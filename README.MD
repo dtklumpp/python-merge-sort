@@ -31,59 +31,6 @@ Merge sort is the first fast, powerful sorting algorithm that you will encounter
 - describe the purpose of big-`O()` notation.
 
 
-## Recursion is your friend!
-
-With [factorial](https://en.wikipedia.org/wiki/Factorial)! The notation `n!` (pronounced "`n` factorial") is defined for whole numbers greater than or equal to `0` -- it means the result of multiplying `n * (n-1) * (n-2) * ... * 3 * 2 * 1`.  You can probably think of an iterative way to write this with a loop, but a recursive version can give us a little insight into recursion.  Here's some code to define a recursive `factorial` function:
-
-```python
-def factorial(n):
-  if n == 0 or n == 1:
-    return n
-  else:
-    return n * factorial(n-1)
-```
-
-Let's use this example to illustrate the three steps of a recursive algorithm:
-
-1. **Define base case(s)** - make a special case or cases to handle the simplest possible inputs without recursion.  The base cases above are where `n` is `1` or `0`. By definition, `0!` and `1!` are both just `1`.
-2. **Make recursive call(s)** - recursively solve smaller subproblems to help find the answer to the main problem. In the example above, `factorial(n-1)` is a call to solve the subproblem of `(n-1)!`.
-3. **Phrase overall answer in terms of subproblem answer(s)** - combine subproblem answers (the result of recursive calls) with any extra processing needed to pull out the final answer. In the example, multiplying the subproblem answer `factorial(n-1)` by `n` gives the final result.
-
-### Check for Understanding
-
-
-Here's pseudocode for calculating the Fibonacci sequence:
-
-```python
-def fibonacci(n):
-  if n == 1 or n == 0:
-    return 1
-  else:
-    return fibonacci(n-1) + fibonacci(n-2)
-```
-
-1. What base case(s) are covered?
-1. What recursive subproblem(s) are solved?
-1. What processing turns the answers from the subproblem(s) into an answer for the overall problem?
-
-Want something a little less obvious? Think about the same three questions for this binary search pseudocode:
-
-```python
-def binary_search(array, target, low, high):
-  if (low > high):
-    return -1
-
-  mid = int((low + high)/2)
-
-  if array[mid] == target:
-    return mid
-  elif array[mid] < target:
-    return binary_search(array, target, mid+1, high)
-  else: # last possibility: a[mid] > target
-    return binary_search(array, target, low, mid-1)
-
-```
-
 
 ## Merge Sort
 
